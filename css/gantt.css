@@ -34,37 +34,70 @@ div.ganttview {
 
 
 /* Horizontal Header */
-
+div.ganttview-hzheader-day ,
 div.ganttview-hzheader-month {
-	width: 60px;
 	height: 20px;
 	border-right: 1px solid #d0d0d0;
 	line-height: 20px;
 }
 
-div.ganttview-hzheader-day ,
 div.ganttview-hzheader-hour{
-	width: 20px;
 	height: 20px;
 	border-right: 1px solid #f0f0f0;
 	border-top: 1px solid #d0d0d0;	
 	color: #777;
 }
-div.ganttview-hzheader-day{
-	line-height: 20px;
 }
 
 div.ganttview-hzheader-hour{
-	line-height: 40px;
+	line-height: 20px;
 }
 
 /* Vertical Header */
 
 div.ganttview-vtheader {
-	margin-top: 61px;
-	width: 240px;
+	/*margin-top: 41px;*/
+	width: 270px;
 	overflow: hidden;
-	background-color: #fff;
+	background-color: #f0f0f0;
+}
+
+div.ganttview-vtheader-info {
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+	background-color: #d0d0d0;
+}
+div.ganttview-vtheader-info-tables {
+	position: absolute;
+	border-style: solid;
+	border-width: 40px 0 0 270px;
+	z-index: 1;	
+	border-color: transparent transparent transparent #ffffff;
+}
+div.ganttview-vtheader-info-tables-text,
+div.ganttview-vtheader-info-timeline-text{
+	position: absolute;
+	z-index: 2;	
+}
+
+div.ganttview-vtheader-info-tables-text{
+	left: 5px;
+	bottom: 5px;
+}
+
+div.ganttview-vtheader-info-timeline-text{
+	right: 5px;
+	top: 5px;
+}
+
+div.ganttview-vtheader-info-timeline {
+	margin-top: -1px;
+	position: absolute;
+	border-style: solid;
+	border-width: 0 270px 40px 0;
+	border-color: transparent #ffffff transparent transparent;
+	z-index: 1;
 }
 
 div.ganttview-vtheader-item {
@@ -91,6 +124,7 @@ div.ganttview-vtheader-series-name {
 /* Slider */
 
 div.ganttview-slide-container {
+	width: 100%;
 	overflow: auto;
 	border-left: 1px solid #999;
 }
@@ -99,7 +133,6 @@ div.ganttview-slide-container {
 /* Grid */
 
 div.ganttview-grid-row-cell {
-	width: 20px;
 	height: 31px;
 	border-right: 1px solid #f0f0f0;
 	border-top: 1px solid #f0f0f0;
@@ -119,6 +152,7 @@ div.ganttview-blocks {
 div.ganttview-block-container {
 	height: 28px;
 	padding-top: 4px;
+	position: relative;
 }
 
 div.ganttview-block {
@@ -127,15 +161,12 @@ div.ganttview-block {
 	height: 25px;
 	background-color: #E5ECF9;
 	border: 1px solid #c0c0c0;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 }
 
 div.ganttview-block-text {
 	position: absolute;
 	height: 12px;
-	font-size: 0.8em;
+	font-size: 0.6em;
 	color: #999;
 	padding: 2px 3px;
 }

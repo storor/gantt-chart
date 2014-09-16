@@ -1,28 +1,39 @@
 $( document ).ready(function() {
-     var ganttData = [
-		{
-			id: 1, name: "Table 1", series: [
-				{ name: "Job 1", start: new Date(2010,00,01,0), end: new Date(2010,00,01,2) },
-				{ name: "Job 2", start: new Date(2010,00,01,3), end: new Date(2010,00,01,4), color: "#f0f0f0" }
-			]
-		}, 
-		{
-			id: 2, name: "Table 2", series: [
-				{ name: "Job 1", start: new Date(2010,00,01,1), end: new Date(2010,00,01,5) },
-				{ name: "Job 2", start: new Date(2010,00,01,6), end: new Date(2010,00,01,7), color: "#f0f0f0" },
-				{ name: "Job 3", start: new Date(2010,00,01,9), end: new Date(2010,00,01,11), color: "#e0e0e0" }
-			]
-		}, 
-		{
-			id: 3, name: "Table 3", series: [
-				{ name: "Job 1", start: new Date(2010,00,01,1), end: new Date(2010,00,01,2) },
-				{ name: "Job 2", start: new Date(2010,00,01,3), end: new Date(2010,00,01,4), color: "#f0f0f0" },
-				{ name: "Job 3", start: new Date(2010,00,01,5), end: new Date(2010,00,01,7), color: "#e0e0e0" }
-			]
+     var parseData = function(rawData){
+        if(!rawData){
+            return [];
+        }
+		var groups = {};
+		rawData.map( function (element) { 
+			var group = element.TabName;
+			groups[group] = groups[group] || {};
+			groups[group].name = element.TabName;
+			groups[group].series = groups[group].series || [];
+			groups[group].series[groups[group].series.length] = {
+				name: element.job,
+				status: element.Status,
+				start: new Date(element.RunStart),
+				end: new Date(element.RunEnd)
+			};			
+		});
+		var array = $.map(groups, function(value, index) {
+		    return [value];
+		});
+		return array;
+	}
+	var parsedData = parseData(data);
+	if(parsedData.length == 0){
+	    return;
+	}
+   $('.content').ganttView({ 
+		data: parsedData,
+		slideWidth: $('.content').width()-280,
+		cellWidth: 61,
+		colors: {
+			Success: '#DFF2BF',
+			Running: '#BDE5F8',
+			Invalid: '#D8000C',
+			Failed: '#FFBABA'
 		}
-	];
-	$('.content').ganttView({ 
-		data: ganttData,
-		slideWidth: 900		
-	});		
+	});	
 });
