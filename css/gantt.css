@@ -1,7 +1,5 @@
 /*
 jQuery.ganttView v.0.8.0
-Copyright (c) 2010 JC Grubbs - jc.grubbs@devmynd.com
-MIT License Applies
 */
 
 div.ganttview-hzheader-month,
@@ -30,21 +28,34 @@ div.ganttview-hzheader-hour.last {
 
 div.ganttview {
 	border: 1px solid #999;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	float: left;
+	position: relative;
+}
+
+lable.show-empty-chbx-lbl{
+	margin-bottom: 2px; 	
 }
 
 
 /* Horizontal Header */
 div.ganttview-hzheader-day ,
 div.ganttview-hzheader-month {
-	height: 20px;
+	height: 19px;
 	border-right: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;	
 	line-height: 20px;
+	font-size: 13px;
+	color: #777;
 }
 
 div.ganttview-hzheader-hour{
-	height: 20px;
+	height: 19px;
 	border-right: 1px solid #f0f0f0;
-	border-top: 1px solid #d0d0d0;	
+	border-bottom: 1px solid #d0d0d0;	
+	font-size: 13px;
+	text-align: center;
+	line-height: 20px;
 	color: #777;
 }
 }
@@ -62,6 +73,32 @@ div.ganttview-vtheader {
 	background-color: #f0f0f0;
 }
 
+div.ganttview-statusses-info{
+	width: 270px;
+	height: 18px;
+	overflow: hidden;
+	position: relative;
+	background-color: #f0f0f0;
+	border-top: 1px solid #999;
+}
+
+div.ganttview-statuss-info{
+	width: 60px;
+	overflow: hidden;
+	float: left;	
+	border-top: 1px solid #f0f0f0;
+	border-left: 1px solid #f0f0f0;
+	border-right: 1px solid #f0f0f0;
+	text-align: center;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #666;
+	margin-left: 3px;
+	margin-top: 2px;
+
+}
+
 div.ganttview-vtheader-info {
 	height: 40px;
 	overflow: hidden;
@@ -73,12 +110,21 @@ div.ganttview-vtheader-info-tables {
 	border-style: solid;
 	border-width: 40px 0 0 270px;
 	z-index: 1;	
-	border-color: transparent transparent transparent #ffffff;
+	border-color: transparent transparent transparent #f9f9f9;
 }
 div.ganttview-vtheader-info-tables-text,
 div.ganttview-vtheader-info-timeline-text{
 	position: absolute;
 	z-index: 2;	
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: bold;
+	color: #999;
+}
+
+.horizontal-scrollbar{
+       overflow-x: visible; /*for horizontal scroll bar */
+       overflow-y: hidden; /*for hiding vertical scroll bar */
 }
 
 div.ganttview-vtheader-info-tables-text{
@@ -96,7 +142,7 @@ div.ganttview-vtheader-info-timeline {
 	position: absolute;
 	border-style: solid;
 	border-width: 0 270px 40px 0;
-	border-color: transparent #ffffff transparent transparent;
+	border-color: transparent #f9f9f9 transparent transparent;
 	z-index: 1;
 }
 
@@ -135,7 +181,8 @@ div.ganttview-slide-container {
 div.ganttview-grid-row-cell {
 	height: 31px;
 	border-right: 1px solid #f0f0f0;
-	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
+	/*border-bottom: 1px solid #666;*/
 }
 
 div.ganttview-grid-row-cell.ganttview-weekend {
@@ -145,22 +192,30 @@ div.ganttview-grid-row-cell.ganttview-weekend {
 
 /* Blocks */
 
-div.ganttview-blocks {
+/*div.ganttview-blocks {
 	margin-top: 40px;
-}
+}*/
 
 div.ganttview-block-container {
-	height: 28px;
-	padding-top: 4px;
+	height: 32px;
+	/*padding-top: 4px;*/
 	position: relative;
 }
 
 div.ganttview-block {
 	position: absolute;
 	float: left;
-	height: 25px;
+	height: 29px;
+	margin-top: 1px;
 	background-color: #E5ECF9;
 	border: 1px solid #c0c0c0;
+}
+
+div.ganttview-block-sla{
+    position: absolute;
+	float: left;
+	height: 31px;
+	background-color: #FF0000;
 }
 
 div.ganttview-block-text {
@@ -176,4 +231,18 @@ div.ganttview-block-text {
 
 div.ganttview-block div.ui-resizable-handle.ui-resizable-s {
 	bottom: -0;
+}
+
+div.ganttview-hzheader:after,
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+div.ganttview-statuss-info:hover{
+	color: white;
+	cursor: pointer;
 }
